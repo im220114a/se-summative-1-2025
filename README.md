@@ -1,2 +1,2 @@
-# se-summative-1-2025
+# SE - Summative Assignment 1
 Software Engineering Summative Assignment 1
