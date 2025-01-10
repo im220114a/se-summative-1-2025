@@ -6,12 +6,11 @@ labels: enhancement
 assignees: ''
 
 ---
+**User Story**
+As a [type of user], I want [some goal] so that [I benefit in this way].
 
 **Description**
 A clear and concise description of what the feature is. Why do we need it?
-
-**User Story**
-As a [type of user], I want [some goal] so that [I benefit in this way].
 
 **Acceptance Criteria**
 - [] List of specific tasks or checks
