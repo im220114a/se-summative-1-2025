@@ -12,10 +12,19 @@ Until now, we’ve been choosing a facilitator informally—often deciding at th
 
 ## Planning
 
+### Empathy Map
+This empathy map was created by analysing the daily experiences of Agile product team members who participate in frequent Scrum stand-ups. I first established who the primary user is (the team member tasked with leading stand-ups) and considered what they typically say, think, do, and feel in a scenario where roles are unclear or randomly assigned at the last minute. By interviewing in office (and through Microsoft Teams) or observing team members—and drawing on my own and the experiences of close colleagues—common themes such as anxiety, uneven rotation, and a desire for advance notice emerged. These insights were then organised into clear categories that reveal unmet needs (“Pains”) and potential benefits (“Gains”).
+
+These findings informed the user stories created for this project.
+
 ### User Stories
 "As a product team member, I want to enter a list of names so that they appear in on an-screen table, allowing me to visually confirm who is included in the daily stand-up rotation"
 
 "As a product team member, I want to generate a random rota for the week, so that each day has a designated person to lead stand-up"
+
+"As a developer (and indirectly as a product team member), I want an automated testing setup so that I can confidently add and modify features without breaking existing functionality."
+
+Each user story has at least one sub-task associated with it.
 
 
 ## Prototype
@@ -26,8 +35,13 @@ Made with Figma
 ## User Documentation
 
 ## Project Management
+Using GitHub Projects
 
 ## Coding Practice
+Naming branches : feature/...
+Naming variables : camelCase
+
 
 ## Testing
 
+## Accessibility
