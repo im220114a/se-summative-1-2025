@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Stand-Up Attendee Manager</title>
+</head>
+<body>
+  <h1>Manage Daily Stand-Up Attendees</h1>
+  
+  <!-- Form for adding names -->
+  <form id="attendeeForm" aria-label="Add a new attendee">
+    <label for="nameInput">Name:</label>
+    <input 
+      type="text" 
+      id="nameInput" 
+      name="nameInput" 
+      placeholder="Enter a name" 
+      aria-required="true" 
+    />
+    <button type="submit">Add</button>
+  </form>
+  
+  <!-- Error message - after checking input -->
+  <p id="errorMessage" style="color: red; display: none;"></p>
+
+  <!-- List to display valid, unique names -->
+  <ul id="attendeeList"></ul>
+
+  <script src="script.js"></script>
+</body>
+</html>
