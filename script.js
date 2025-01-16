@@ -1,13 +1,13 @@
 // Store our attendees here
-const attendees = [];
+let attendees = [];
 
 // Select DOM elements
 const attendeeForm = document.getElementById('attendeeForm');
 const nameInput = document.getElementById('nameInput');
 const errorMessage = document.getElementById('errorMessage');
 const attendeeList = document.getElementById('attendeeList');
+const clearAllBtn = document.getElementById('clearAll');
 
-// Check for when the form is submitted
 attendeeForm.addEventListener('submit', (event) => {
   event.preventDefault(); // Prevent page refresh
 
@@ -31,16 +31,45 @@ attendeeForm.addEventListener('submit', (event) => {
     errorMessage.style.display = 'block';
     return;
   }
+
   errorMessage.style.display = 'none';
 
-  // If all checks pass, add to the list
-  attendees.push(newName);
+  addAttendee(attendees, newName);
 
-  // Create a list item and add it
+  // Create a list item
   const li = document.createElement('li');
   li.textContent = newName;
+
+  // Create a small remove button
+  const removeBtn = document.createElement('button');
+  removeBtn.textContent = 'X';
+  removeBtn.style.marginLeft = '10px';
+  removeBtn.addEventListener('click', () => {
+    // Remove from the array
+    removeAttendee(attendees, newName);
+    // Remove from the DOM
+    attendeeList.removeChild(li);
+  });
+
+  // Append the remove button to each name
+  li.appendChild(removeBtn);
+
+  // Append li to the list
   attendeeList.appendChild(li);
 
   // Reset the input field
   nameInput.value = '';
+});
+
+// Clear All button event
+clearAllBtn.addEventListener('click', () => {
+  const userConfirmed = confirm('Are you sure you want to clear the entire list?');
+  if (userConfirmed) {
+    clearAttendees(attendees);
+
+    // Remove all <li> from the DOM
+    while (attendeeList.firstChild) {
+      attendeeList.removeChild(attendeeList.firstChild);
+    }
+  }
 });
