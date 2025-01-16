@@ -37,6 +37,15 @@ Made with Figma
 ## Project Management
 Using GitHub Projects
 
+### Scrum Methodology
+As key aspect of this was regular reviews to inform decisions that improve the workflow process for the rest of the project. This is part of the Scrum methodology in which the product team has reviews at the end of each "Sprint" (a set period). As I am the only member of the team and due to the time available for this project, I was only able to perform sprints of 2/3 days, in which I would review if anything could be done to improve my work. As an example of where this had helped was during my first sprint in which I noticed that GitHub, upon trying to merge my branches, informed me that I should setup "GitHub Actions"
+
+!! INSERT IMAGE !!
+
+This was noted to be looked at during one of my sprint reviews. I discovered that GitHub Actions is a Continious Integration and Continous Delivery platform built into GitHub, which automates specific tasks, such as running tests whenever new code is pushed. This stood out as a very useful and applicable tool for this project, so I created another ticket to look at implementing GitHub Actions as part of the next sprint.
+
+!! INSERT TICKET !!
+
 ## Coding Practice
 Naming branches : feature/...
 Naming variables : camelCase
