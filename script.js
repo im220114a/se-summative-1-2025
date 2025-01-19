@@ -115,7 +115,7 @@ generateRotaBtn.addEventListener('click', () => {
     </thead>
     <tbody>`;
 
-  for (let i = 0; i < assignments.length - 1; i++) {
+  for (let i = 0; i < assignments.length; i++) {
     const { day, person } = assignments[i];
     table_html += `<tr>
       <td>${day}</td>
