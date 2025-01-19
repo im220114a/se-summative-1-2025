@@ -77,7 +77,6 @@ clearAllBtn.addEventListener('click', () => {
   }
 });
 
-// Event listener for generating the rota
 generateRotaBtn.addEventListener('click', () => {
   // Collect which days are checked
   const checkboxes = weekdaySelection.querySelectorAll('input[type="checkbox"]');
@@ -103,18 +102,28 @@ generateRotaBtn.addEventListener('click', () => {
   // Generate the rota
   const assignments = generateRota(chosenDays, attendees);
 
-  // If empty array returned (i.e., no valid input)
+  // If empty array returned
   if (assignments.length === 0) {
-    rotaResult.innerHTML = '<p style="color:red;">Error : Could not generate a rota due to invalid inputs.</p>';
+    rotaResult.innerHTML = '<p style="color:red;">Error: Could not generate a rota due to invalid inputs.</p>';
     return;
   }
 
-  // Build a basic list (will change to a table eventually)
-  let list_html = '<h3>Rota</h3><ul style="list-style:none;">';
-  assignments.forEach(({ day, person }) => {
-    list_html += `<li>${day}: <strong>${person}</strong></li>`;
-  });
-  list_html += '</ul>';
+  // Build an HTML table with fade-in animation
+  let table_html = `<table class="rotaTable fade-in">
+    <thead>
+      <tr><th>DAY</th><th>LEADER</th></tr>
+    </thead>
+    <tbody>`;
 
-  rotaResult.innerHTML = list_html;
+  for (let i = 0; i < assignments.length - 1; i++) {
+    const { day, person } = assignments[i];
+    table_html += `<tr>
+      <td>${day}</td>
+      <td>${person}</td>
+    </tr>`;
+  }
+
+  table_html += `</tbody></table>`;
+
+  rotaResult.innerHTML = table_html;
 });
