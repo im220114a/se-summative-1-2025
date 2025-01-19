@@ -78,4 +78,25 @@ body {
   #attendeeList button:hover {
     background-color: #c62828;
   }
+
+
+#weekdayOptions {
+    margin: 1rem auto;
+    display: inline-block; 
+    text-align: left; 
+  }
+  
+  #weekdayOptions label {
+    margin-right: 10px;
+  }
+  
+  #generateRota {
+    margin-top: 1rem;
+  }
+  
+  #rotaResult {
+    margin-top: 1rem;
+    display: inline-block; 
+    text-align: left;
+  }
   

@@ -1,13 +1,3 @@
-// __tests__/displayRemoveReset.test.js
-
-/**
- * Display, Remove, & Reset (TDD)
- * We expect to:
- * 1. Insert new attendees into a structure (e.g., array or DOM table).
- * 2. Remove specific attendees upon request.
- * 3. Clear the entire list with a confirmation.
- */
-
 const { addAttendee, removeAttendee, clearAttendees } = require('../functions');
 
 describe("Display, Remove, & Reset Attendees", () => {

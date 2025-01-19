@@ -1,4 +1,3 @@
-
 // Adds an attendee to the array
 function addAttendee(array, name) {
   array.push(name);
@@ -8,8 +7,6 @@ function addAttendee(array, name) {
 // Removes an attendee from the array
 function removeAttendee(array, nameToRemove) {
   const index = array.indexOf(nameToRemove);
-
-  // If the name exists in the array...
   if (index !== -1) {
     array.splice(index, 1);
   }
@@ -21,13 +18,43 @@ function clearAttendees(array) {
   array.length = 0;
   return array;
 }
-  
-// Export these so Jest can import them
+
+/**
+ * Generate a random rota:
+ * - If no days or no participants, returns []
+ * - Shuffles the participants once
+ * - Assigns each day in order, looping over the shuffled participants if needed
+ */
+function generateRota(days, participants) {
+  if (!days || days.length === 0 || !participants || participants.length === 0) {
+    return [];
+  }
+
+  // Shuffle the list - avoid mutating the original
+  const shuffled = shuffleArray([...participants]);
+
+  // For each day, pick the next person from the shuffled array, wrapping if needed
+  const assignments = days.map((day, i) => {
+    const person = shuffled[i % shuffled.length];
+    return { day, person };
+  });
+
+  return assignments;
+}
+
+// Shuffle achieved using Fisher-Yates algorithm
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+// Export for Jest tests
 module.exports = {
   addAttendee,
   removeAttendee,
-  clearAttendees
+  clearAttendees,
+  generateRota
 };
-
-
-  
