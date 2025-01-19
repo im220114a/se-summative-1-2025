@@ -30,6 +30,21 @@
   <!-- Clear All button -->
   <button id="clearAll">Clear All</button>
 
+  <!-- Choose which weekdays to include -->
+  <div id="weekdaySelection" style="margin-top: 1rem;">
+    <label><input type="checkbox" value="Monday" checked> Monday</label>
+    <label><input type="checkbox" value="Tuesday" checked> Tuesday</label>
+    <label><input type="checkbox" value="Wednesday" checked> Wednesday</label>
+    <label><input type="checkbox" value="Thursday" checked> Thursday</label>
+    <label><input type="checkbox" value="Friday" checked> Friday</label>
+  </div>
+
+  <!-- Button to generate the random rota -->
+  <button id="generateRota" style="margin-top: 1rem;">Generate Rota</button>
+
+  <!-- A place to display the rota or any error messages related to it -->
+  <div id="rotaResult" style="margin-top: 1rem;"></div>
+
   <!-- Import Both JS Scripts -->
   <script src="functions.js"></script>
   <script src="script.js"></script>

@@ -7,6 +7,9 @@ const nameInput = document.getElementById('nameInput');
 const errorMessage = document.getElementById('errorMessage');
 const attendeeList = document.getElementById('attendeeList');
 const clearAllBtn = document.getElementById('clearAll');
+const weekdaySelection = document.getElementById('weekdaySelection');
+const generateRotaBtn = document.getElementById('generateRota');
+const rotaResult = document.getElementById('rotaResult');
 
 attendeeForm.addEventListener('submit', (event) => {
   event.preventDefault(); // Prevent page refresh
@@ -72,4 +75,46 @@ clearAllBtn.addEventListener('click', () => {
       attendeeList.removeChild(attendeeList.firstChild);
     }
   }
+});
+
+// Event listener for generating the rota
+generateRotaBtn.addEventListener('click', () => {
+  // Collect which days are checked
+  const checkboxes = weekdaySelection.querySelectorAll('input[type="checkbox"]');
+  const chosenDays = [];
+  checkboxes.forEach((cb) => {
+    if (cb.checked) {
+      chosenDays.push(cb.value);
+    }
+  });
+
+  // If no days chosen, show error
+  if (chosenDays.length === 0) {
+    rotaResult.innerHTML = '<p style="color:red;">Please select at least one day.</p>';
+    return;
+  }
+
+  // If no attendees
+  if (attendees.length === 0) {
+    rotaResult.innerHTML = '<p style="color:red;">No attendees found. Please add names first.</p>';
+    return;
+  }
+
+  // Generate the rota
+  const assignments = generateRota(chosenDays, attendees);
+
+  // If empty array returned (i.e., no valid input)
+  if (assignments.length === 0) {
+    rotaResult.innerHTML = '<p style="color:red;">Error : Could not generate a rota due to invalid inputs.</p>';
+    return;
+  }
+
+  // Build a basic list (will change to a table eventually)
+  let list_html = '<h3>Rota</h3><ul style="list-style:none;">';
+  assignments.forEach(({ day, person }) => {
+    list_html += `<li>${day}: <strong>${person}</strong></li>`;
+  });
+  list_html += '</ul>';
+
+  rotaResult.innerHTML = list_html;
 });
