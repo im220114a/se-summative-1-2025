@@ -1,4 +1,4 @@
-const { generateRota } = require('../functions'); // Adjust path as needed
+const { generateRota } = require('../functions');
 
 describe("Generate Rota", () => {
   test("returns empty array if no days or no participants", () => {
