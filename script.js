@@ -1,5 +1,6 @@
 // Store our attendees here
 let attendees = [];
+let finalAssignments = [];
 
 // Select DOM elements
 const attendeeForm = document.getElementById('attendeeForm');
@@ -10,7 +11,9 @@ const clearAllBtn = document.getElementById('clearAll');
 const weekdaySelection = document.getElementById('weekdaySelection');
 const generateRotaBtn = document.getElementById('generateRota');
 const rotaResult = document.getElementById('rotaResult');
+const exportRotaBtn = document.getElementById('exportRota');
 
+// Clicking the "Add" Button or submitting a name
 attendeeForm.addEventListener('submit', (event) => {
   event.preventDefault(); // Prevent page refresh
 
@@ -64,7 +67,7 @@ attendeeForm.addEventListener('submit', (event) => {
   nameInput.value = '';
 });
 
-// Clear All button event
+// Clicking the "Clear All" Button
 clearAllBtn.addEventListener('click', () => {
   const userConfirmed = confirm('Are you sure you want to clear the entire list?');
   if (userConfirmed) {
@@ -77,6 +80,7 @@ clearAllBtn.addEventListener('click', () => {
   }
 });
 
+// Clicking the "Generate Rota" Button
 generateRotaBtn.addEventListener('click', () => {
   // Collect which days are checked
   const checkboxes = weekdaySelection.querySelectorAll('input[type="checkbox"]');
@@ -108,6 +112,9 @@ generateRotaBtn.addEventListener('click', () => {
     return;
   }
 
+  // Store globally for export
+  finalAssignments = assignments; 
+
   // Build an HTML table with fade-in animation
   let table_html = `<table class="rotaTable fade-in">
     <thead>
@@ -126,4 +133,33 @@ generateRotaBtn.addEventListener('click', () => {
   table_html += `</tbody></table>`;
 
   rotaResult.innerHTML = table_html;
+});
+
+// Clicking the "Export Rota" Button
+exportRotaBtn.addEventListener('click', () => {
+  // If there's no generated rota
+  if (!finalAssignments || finalAssignments.length === 0) {
+    rotaResult.innerHTML = '<p style="color:red;">No rota available to export. Please generate one first.</p>';
+    return;
+  }
+
+  // Convert finalAssignments to CSV
+  const csvData = exportRota(finalAssignments);
+  if (!csvData) {
+    rotaResult.innerHTML = '<p style="color:red;">Could not export empty data.</p>';
+    return;
+  }
+
+  // Create a blob for the CSV
+  const blob = new Blob([csvData], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+
+  // Create a temporary link to download the file
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'standup_rota.csv';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
 });

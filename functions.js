@@ -51,10 +51,27 @@ function shuffleArray(arr) {
   return arr;
 }
 
+/**
+ * Convert an array of assignments (e.g., [{ day, person }]) to CSV string.
+ * Returns an empty string if no assignments.
+ */
+function exportRota(assignments) {
+  if (!assignments || assignments.length === 0) {
+    return "";
+  }
+  
+  let csv = "Day,Leader\n"; // CSV header
+  assignments.forEach(({ day, person }) => {
+    csv += `${day},${person}\n`;
+  });
+  return csv;
+}
+
 // Export for Jest tests
 module.exports = {
   addAttendee,
   removeAttendee,
   clearAttendees,
-  generateRota
+  generateRota,
+  exportRota
 };
