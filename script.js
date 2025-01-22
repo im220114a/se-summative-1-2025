@@ -94,12 +94,14 @@ generateRotaBtn.addEventListener('click', () => {
   // If no days chosen, show error
   if (chosenDays.length === 0) {
     rotaResult.innerHTML = '<p style="color:red;">Please select at least one day.</p>';
+    finalAssignments = [];
     return;
   }
 
   // If no attendees
   if (attendees.length === 0) {
     rotaResult.innerHTML = '<p style="color:red;">No attendees found. Please add names first.</p>';
+    finalAssignments = [];
     return;
   }
 
