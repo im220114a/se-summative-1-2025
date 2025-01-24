@@ -1,10 +1,14 @@
-// Adds an attendee to the array
+/**
+ * Adds an item to an array - used to add a name to the attendees list
+ */
 function addAttendee(array, name) {
   array.push(name);
   return array;
 }
 
-// Removes an attendee from the array
+/**
+ * Removes an item from an array - used to remove names from the attendees list
+ */
 function removeAttendee(array, nameToRemove) {
   const index = array.indexOf(nameToRemove);
   if (index !== -1) {
@@ -13,7 +17,9 @@ function removeAttendee(array, nameToRemove) {
   return array;
 }
 
-// Clears all attendees from the array
+/**
+ * Returns an empty array - used to clear the attendees array in particular
+ */
 function clearAttendees(array) {
   array.length = 0;
   return array;
@@ -42,7 +48,9 @@ function generateRota(days, participants) {
   return assignments;
 }
 
-// Shuffle achieved using Fisher-Yates algorithm
+/**
+ * Return an array that has been shuffled using the Fisher-Yates algorithm.
+ */
 function shuffleArray(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));

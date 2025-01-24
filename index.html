@@ -3,54 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <title>Stand-Up Attendee Manager</title>
+  
+  <!-- Google Fonts: Open Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h1>Stand-Up Scheduler</h1>
   
-  <!-- Form for adding names -->
-  <form id="attendeeForm" aria-label="Add a new attendee">
-    <label for="nameInput">Name:</label>
-    <input 
-      type="text" 
-      id="nameInput" 
-      name="nameInput" 
-      placeholder="Enter a name" 
-      aria-required="true" 
-    />
-    <button>Add</button>
-  </form>
-  
-  <!-- Error message - after checking input -->
-  <p id="errorMessage" style="color: red; display: none;"></p>
+  <!-- Left Box: Name Input, List, Clear All -->
+  <div class="box leftBox">
+    <div class="step-tag">1</div>
+    
+    <p class="box-description">
+      Enter the names of all product team members here. Identical names cannot be added twice.
+    </p>
+    <form id="attendeeForm" aria-label="Add a new attendee">
+      <label for="nameInput">Name:</label>
+      <input 
+        type="text"
+        id="nameInput"
+        name="nameInput"
+        placeholder="Enter a name"
+        aria-required="true"
+      />
+      <button>Add</button>
+    </form>
+    
+    <p id="errorMessage" style="display: none;"></p>
 
-  <!-- List to display valid, unique names -->
-  <ul id="attendeeList"></ul>
-
-  <!-- Clear All button -->
-  <button id="clearAll">Clear All</button>
-
-  <!-- Choose which weekdays to include -->
-  <div id="weekdaySelection" style="margin-top: 1rem;">
-    <label><input type="checkbox" value="Monday" checked> Monday</label>
-    <label><input type="checkbox" value="Tuesday" checked> Tuesday</label>
-    <label><input type="checkbox" value="Wednesday" checked> Wednesday</label>
-    <label><input type="checkbox" value="Thursday" checked> Thursday</label>
-    <label><input type="checkbox" value="Friday" checked> Friday</label>
+    <ul id="attendeeList"></ul>
+    <button id="clearAll">Clear All</button>
   </div>
 
-  <!-- Button to generate the random rota -->
-  <button id="generateRota" style="margin-top: 1rem;">Generate Rota</button>
+  <!-- Middle Box: Day Selection + Generate Rota -->
+  <div class="box middleBox">
+    <div class="step-tag">2</div>
+    
+    <p class="box-description">
+      Select the days on which stand-ups will occur. Uncheck days you don't want in the schedule.
+    </p>
+    <div id="weekdaySelection">
+      <label><input type="checkbox" value="Monday" checked> Monday</label>
+      <label><input type="checkbox" value="Tuesday" checked> Tuesday</label>
+      <label><input type="checkbox" value="Wednesday" checked> Wednesday</label>
+      <label><input type="checkbox" value="Thursday" checked> Thursday</label>
+      <label><input type="checkbox" value="Friday" checked> Friday</label>
+    </div>
+  
+    <button id="generateRota">Generate Rota</button>
+  </div>
 
-  <!-- Button to export the schedule -->
-  <button id="exportRota" style="margin-top: 1rem;">Export Rota</button>
+  <!-- Right Box: Rota & Export Button -->
+  <div class="box rightBox">
+    <div class="step-tag">3</div>
+    
+    <!-- Once generated, the table goes here -->
+    <div id="rotaResult"></div>
 
-  <!-- A place to display the rota or any error messages related to it -->
-  <br><div id="rotaResult" style="margin-top: 1rem;"></div>
+    <button id="exportRota">Export Rota</button>
+  </div>
 
-  <!-- Import Both JS Scripts -->
+  <!-- JS scripts -->
   <script src="functions.js"></script>
   <script src="script.js"></script>
-
 </body>
 </html>
