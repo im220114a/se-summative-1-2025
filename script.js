@@ -13,6 +13,9 @@ const generateRotaBtn = document.getElementById('generateRota');
 const rotaResult = document.getElementById('rotaResult');
 const exportRotaBtn = document.getElementById('exportRota');
 
+// Default message for the box
+rotaResult.innerHTML = '<p>A rota has not been generated yet. Follow the steps to generate one.</p>';
+
 // Clicking the "Add" Button or submitting a name
 attendeeForm.addEventListener('submit', (event) => {
   event.preventDefault(); // Prevent page refresh
@@ -93,14 +96,14 @@ generateRotaBtn.addEventListener('click', () => {
 
   // If no days chosen, show error
   if (chosenDays.length === 0) {
-    rotaResult.innerHTML = '<p style="color:red;">Please select at least one day.</p>';
+    rotaResult.innerHTML = '<p style="color:red;font-weight: 600;">Please select at least one day.</p>';
     finalAssignments = [];
     return;
   }
 
-  // If no attendees
+  // If no attendees, show error
   if (attendees.length === 0) {
-    rotaResult.innerHTML = '<p style="color:red;">No attendees found. Please add names first.</p>';
+    rotaResult.innerHTML = '<p style="color:red;font-weight: 600;">No attendees found. Please add names first.</p>';
     finalAssignments = [];
     return;
   }
@@ -110,14 +113,14 @@ generateRotaBtn.addEventListener('click', () => {
 
   // If empty array returned
   if (assignments.length === 0) {
-    rotaResult.innerHTML = '<p style="color:red;">Error: Could not generate a rota due to invalid inputs.</p>';
+    rotaResult.innerHTML = '<p style="color:red;font-weight: 600;">Error: Could not generate a rota due to invalid inputs.</p>';
     return;
   }
 
   // Store globally for export
   finalAssignments = assignments; 
 
-  // Build an HTML table with fade-in animation
+  // Build the rota table
   let table_html = `<table class="rotaTable fade-in">
     <thead>
       <tr><th>DAY</th><th>LEADER</th></tr>
