@@ -5,9 +5,20 @@ A simple web application for product teams to manage daily stand-up rotas. It al
 1. [Context and Purpose](#context-and-purpose)
 2. [User Documentation](#user-documentation)
 3. [Technical Documentation](#technical-documentation)
+   - [Local Installation & Setup](#local-installation--setup)
+   - [Testing](#testing)
+   - [Known Limitations](#known-limitations)
 4. [Development and Design Process](#development-and-design-process)
    - [Planning](#planning)
    - [Non-Functional Design Prototype](#non-functional-design-prototype)
+   - [Project Management](#project-management)
+     - [Ticketing System](#ticketing-system)
+     - [Branching Strategy](#branching-strategy)
+     - [Scrum Methodology](#scrum-methodology)
+   - [Coding Practice](#coding-practice)
+   - [Experimenting With Test Driven Development (TDD)](#experimenting-with-test-driven-development-tdd)
+   - [Accessibility](#accessibility)
+5. [Project Evaluation](#project-evaluation)
 
 ## Context and Purpose 
 Agile Scrum teams rely on daily stand-ups to share progress, address blockers, and plan immediate next steps. Traditionally, a Scrum Master or consistent facilitator leads these quick sessions. However, our managers and Scrum leaders believe in rotating this responsibility amongst each product team memeber. This model is being implemented in order to :
@@ -15,7 +26,7 @@ Agile Scrum teams rely on daily stand-ups to share progress, address blockers, a
 * Develop leadership competencies for future Scrum Masters or project leads.
 * Encourage balanced participation, as people who lead one day are more likely to actively support others on subsequent days.
 
-Until now, we’ve been choosing a facilitator informally—often deciding at the last minute. This spontaneous approach can catch team members off guard or unfairly shift the burden onto a few individuals. Our application provides a simple, efficient solution: it generates a random schedule for the entire week, ensuring each person on the product team knows in advance which day they’ll be leading the stand-up. In the future, the application could be enhanced to integrate with existing project management tools—such as Jira or Slack—to post daily reminders. However, currently the website produced is a minimum viable product.
+Until now, we’ve been choosing a facilitator informally—often deciding at the last minute. This spontaneous approach can catch team members off guard or unfairly shift the burden onto a few individuals. This application provides a simple, efficient solution: it generates a random schedule for the entire week, ensuring each person on the product team knows in advance which day they’ll be leading the stand-up. In the future, the application could be enhanced to integrate with existing project management tools—such as Jira—to post daily reminders. However, currently the website produced is a minimum viable product.
 
 ## User Documentation
 This application is a three-step tool :
@@ -48,6 +59,9 @@ This application is a three-step tool :
 3. Generate Rota by clicking the button. A table appears in the right box, showing each day with a randomly assigned leader.
 4. If you want to export or share it, click “Export Rota.”
 
+![image](https://github.com/user-attachments/assets/416a639f-03ac-4187-8b3e-cc0c83ffde73)
+
+
 ## Technical Documentation
 
 
@@ -56,10 +70,10 @@ This application is a three-step tool :
 | **index.html**       | Main HTML page, containing three “boxes” for names, days, rota. |
 | **style.css**        | Core CSS styling.                                               |
 | **script.js**        | Main client-side logic for DOM events, form submissions, etc.   |
-| **functions.js**     | Core logic functions (add, remove, shuffle, etc.). Kept in a seperate .js file for jest testing|
-| **\_\_tests\_\_/**   | Jest test files held in this folder                             |
-| **package.json**     | (Optional) Lists dev dependencies, for Jest.                    |
-| **package-lock.json**|                    |
+| **functions.js**     | Core logic functions (add, remove, shuffle, etc.). Kept in a seperate .js file for jest testing. Ensure to export any new functions at the bottom of the script, like how other functions are|
+| **\_\_tests\_\_/**   | All Jest test files are held in this folder                             |
+| **package.json**     | Lists dev dependencies, for Jest.                    |
+| **package-lock.json**| Ensures consistent dependencies by locking specific versions    |
 | **.github/**         | Contains issue templates and GitHub Actions code                |
 
 ### Local Installation & Setup
@@ -69,17 +83,12 @@ This application is a three-step tool :
    git clone https://github.com/im220114a/se-summative-1-2025.git
    cd se-summative-1-2025
    ```
-
-2. **(Optional)** Install dev dependencies for testing:
-
-   ```bash
-   npm install
-   ```
-3. Open `index.html` in your preferred browser to run the application locally.
+   
+2. Open `index.html` in your preferred browser to run the application locally.
 
 ### Testing
-We use **Jest** for testing the logic in `functions.js`. Basic tests live in `__tests__`:
-1. Install Jest (if not done):
+I have used **Jest** for testing the logic in `functions.js`. Basic tests live in `__tests__`:
+1. Install Jest (must have [Node.js](https://nodejs.org/en/download) installed):
 
    ```bash
    npm install --save-dev jest
@@ -95,7 +104,7 @@ Sample Test - `displayRemoveReset.test.js` demonstrates the expected format for 
 
 ### Known Limitations
 - Currently no persistent storage. When the page reloads, the attendee list resets.
-- Limited error handling (e.g. quickly re-adding a name)
+- Limited error handling (e.g. no handling for quickly re-adding a name)
 
 ## Development and Design Process
 
@@ -128,16 +137,20 @@ The initial design prototype was created using Figma to visualise the interface 
 ### Project Management
 After having completed the design stage of the project, the next step was to organise the development pipeline. This invovled using GitHub and GitHub Projects to ensure effective workflow and task tracking.
 
-### Ticketing System
+#### Ticketing System
 GitHub Projects’ Kanban board functionality was used to manage tasks, linking issues and branches to ensure  alignment.
 
+![image](https://github.com/user-attachments/assets/e70bf352-1a36-4a03-ae4f-79d2c94362ad)
+
+
 Before starting development, I utilised GitHub's [ticket template](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository) feature to define two types : "Features" and "Bugs". Feature tickets required an associated user story, a description, acceptance criteria and optional additional notes. Bug tickets required a description, steps to reproduce, the expected result, images if applicable and optional additional notes. I then created sub-task tickets linked to the 3 user stories created previously. This link was only established by copying the user story in the sub-task ticket, however I discovered near the end of development that "Sub-issues" are a built-in feature of GitHub Projects. I could theoretically create a ticket for each user story and create sub-task tickets directly from them, which would be easier to track and manage. For future GitHub projects, I'll aim to utilise this functionality where applicable.
+
 ![image](https://github.com/user-attachments/assets/45932511-727b-4111-aae4-4befeeced2e2)
 
-### Branching Strategy
+#### Branching Strategy
 Each ticket was associated with a dedicated branch, ensuring changes were incrementally merged into the main codebase. This approach enabled controlled versioning and reduced the risk of introducing bugs.
 
-### Scrum Methodology
+#### Scrum Methodology
 A key aspect of this was regular reviews to inform decisions that improve the workflow process for the rest of the project. This is part of the Scrum methodology in which the product team has reviews at the end of each "Sprint" (a set period). As I am the only member of the team and due to the time available for this project, I was only able to perform sprints of 2/3 days, in which I would review if anything could be done to improve [insert here]. As an example of where this had helped was during my first sprint in which I noticed that GitHub, upon trying to merge my branches, informed me that I should setup "GitHub Actions"
 
 ![image](https://github.com/user-attachments/assets/7d490f44-b336-4026-ac39-74ab66197b97)
@@ -160,14 +173,53 @@ Comments are used regularly throughout my code to clarify what is occuring and w
 
 
 ### Testing
-For testing my application, I used the testing framework [Jest](https://jestjs.io/). [insert reasoning on why Jest is a good framework to use for this simple project]. After enabling GitHub Actions, the tests I defined would automatically run whenever attempting to create pull requests to the main branch, ensuring that any additions to the codebase would not be breaking any existing functionality. This is incredibly important where bugs may slip through manual testing.
+After enabling GitHub Actions, the tests I defined would automatically run whenever attempting to create pull requests to the main branch, ensuring that any additions to the codebase would not be breaking any existing functionality. This is incredibly important where bugs may slip through manual testing.
 
 #### Experimenting with Test Driven Development (TDD)
-Part of this project involved learning about the usage of test-driven development, and more importantly, how one would incorporate it into their workflow. In order to understand it better, I decided to choose one ticket ("Display, Remove Names & Reset List") that would be developed via TDD.
+Part of this project involved learning about the usage of test-driven development, and more importantly, how one would incorporate it into their workflow. In order to understand it better, I decided to choose one ticket ("Display, Remove Names & Reset List") that would be developed via TDD. For testing my application, I used the testing framework [Jest](https://jestjs.io/).
 
 I first had to define tests for what I would expect to be returned from functions
 
-![image](https://github.com/user-attachments/assets/7daed43b-cdca-4238-809e-22921f25b7aa)
+```javascript
+const { addAttendee, removeAttendee, clearAttendees } = require('../functions');
+
+describe("Display, Remove, & Reset Attendees", () => {
+    let attendees;
+  
+    beforeEach(() => {
+      // Reset our "attendees" for each test
+      attendees = [];
+    });
+  
+    test("should display newly added names (simulate adding 2 names)", () => {
+      // Simulate adding names to the structure
+      addAttendee(attendees, "Alice");
+      addAttendee(attendees, "Bob");
+  
+      // Expect the "attendees" to have these two names
+      expect(attendees).toEqual(["Alice", "Bob"]); 
+
+    });
+  
+    test("should remove an attendee when asked", () => {
+      // Suppose we have 3 initial names
+      attendees = ["Alice", "Bob", "Charlie"];
+  
+      removeAttendee(attendees, "Bob");
+  
+      // 'Bob' should no longer be in the list
+      expect(attendees).toEqual(["Alice", "Charlie"]);
+    });
+  
+    test("should clear the entire list with a confirmation", () => {
+      attendees = ["Alice", "Bob", "Charlie"];
+      clearAttendees(attendees, /* confirm = true */);
+  
+      // Expect the array to be empty
+      expect(attendees).toEqual([]);
+    });
+  });
+  ```
 
 Then, running the tests would guarantee that they fail :
 
@@ -175,13 +227,43 @@ Then, running the tests would guarantee that they fail :
 
 These tests were merged with the main branch and I began developing a new branch dedicated to actually creating these theoretical functions :
 
-![image](https://github.com/user-attachments/assets/c5fa1062-4c5a-454c-b0a2-8de5c5e25d12)
+```javascript
+/**
+ * Adds an item to an array - used to add a name to the attendees list
+ */
+function addAttendee(array, name) {
+  array.push(name);
+  return array;
+}
+
+/**
+ * Removes an item from an array - used to remove names from the attendees list
+ */
+function removeAttendee(array, nameToRemove) {
+  const index = array.indexOf(nameToRemove);
+  if (index !== -1) {
+    array.splice(index, 1);
+  }
+  return array;
+}
+
+/**
+ * Returns an empty array - used to clear the attendees array in particular
+ */
+function clearAttendees(array) {
+  array.length = 0;
+  return array;
+}
+```
 
 After developing the function, I then made sure the tests had passed 
 
 ![image](https://github.com/user-attachments/assets/e9d74d16-892f-4c07-b807-3885f2f8e596)
 
-
 ### Accessibility
 
-## Evaluation
+## Project Evaluation
+
+This project successfully delivered the Minimum Viable Product (MVP), meeting all the main features outlined during requirements gathering. The interface is functional and user-friendly enough for regular use by product teams. I spent a lot of time refining my understanding of GitHub’s workflow for version control, which was more intensive than previous experiences but valuable for improving my approach. Working in an Agile environment using Scrum was familiar (as I engage with it in my professional role), but I still learned a lot by iterating on my workflow, such as setting up GitHub Actions for automated testing, improving naming conventions, and breaking down larger tasks into smaller, more manageable ones. That said, the analysis and design phases were fairly minimal, relying mostly on an empathy map. Expanding this with techniques like user journey mapping or additional stakeholder input would have helped create a stronger foundation. My ticketing system was consistent but could have been improved with clearer acceptance criteria and better use of GitHub’s "Create sub-issue" feature for managing tasks. 
+
+The product itself aligns with the original Figma prototype, with only minor stylistic differences. The codebase is reasonably structured, with frequent comments and automated tests to make it easier to extend in the future. Feedback has already highlighted a useful addition—allowing team members to select specific working days, as not everyone works full-time. Overall, I’m happy with how the project turned out. It was a good opportunity to apply and improve my skills, and it highlighted areas where I can do better in the future, especially in the design and planning stages.
