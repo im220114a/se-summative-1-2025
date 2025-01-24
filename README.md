@@ -1,7 +1,7 @@
 # Stand-Up Scheduler
 A simple web application for product teams to manage daily stand-up rotas. It allows users to input team member names, select which weekdays to hold stand-ups, randomly assign a leader for each day, and export the final schedule as a CSV file. The application is built with vanilla HTML, CSS, and JavaScript, and uses Jest for basic testing. Created By: Ibrahim Malik (@im220114a).
 
-## Table of Contents
+## Contents
 1. [Context and Purpose](#context-and-purpose)
 2. [User Documentation](#user-documentation)
 3. [Technical Documentation](#technical-documentation)
@@ -66,12 +66,12 @@ This application is a three-step tool :
 
 | File/Folder          | Purpose                                                         |
 |----------------------|-----------------------------------------------------------------|
-| **index.html**       | Main HTML page, containing three “boxes” for names, days, rota. |
-| **style.css**        | Core CSS styling.                                               |
-| **script.js**        | Main client-side logic for DOM events, form submissions, etc.   |
+| **index.html**       | Main HTML page, containing three “boxes” for names, days, rota |
+| **style.css**        | Core CSS styling  |
+| **script.js**        | Main client-side logic for DOM events, form submissions, etc  |
 | **functions.js**     | Core logic functions (add, remove, shuffle, etc.). Kept in a seperate .js file for jest testing. Ensure to export any new functions at the bottom of the script, like how other functions are|
 | **\_\_tests\_\_/**   | All [Jest](https://jestjs.io/) test files are held in this folder                             |
-| **package.json**     | Lists dev dependencies, for Jest.                    |
+| **package.json**     | Lists dev dependencies, for Jest                  |
 | **package-lock.json**| Ensures consistent dependencies by locking specific versions    |
 | **.github/**         | Contains issue templates and GitHub Actions code                |
 
@@ -272,4 +272,6 @@ I made adjustments to ensure a more accessible colour palette and, using [Google
 
 ## Project Evaluation
 
-This project successfully delivered the Minimum Viable Product (MVP), meeting all the main features outlined during requirements gathering. The interface is functional and user-friendly enough for regular use by product teams. I spent a lot of time refining my understanding of GitHub’s workflow for version control, which was more intensive than previous experiences but valuable for improving my approach. Working in an Agile environment using Scrum was familiar, but I still learned a lot by iterating on my workflow, such as setting up GitHub Actions for automated testing, improving naming conventions, and breaking down larger tasks into smaller, more manageable ones. That said, the analysis and design phases were fairly minimal, relying mostly on an empathy map. Expanding this with techniques like user journey mapping or additional stakeholder input would have helped create a stronger foundation. My ticketing system was consistent but could have been improved with clearer acceptance criteria and better use of GitHub’s "Create sub-issue" feature for managing tasks. The product itself aligns with the original Figma prototype, with some stylistic differences for the sake of accessibility. The codebase is reasonably structured, with frequent comments and automated tests to make it easier to extend in the future. Feedback has already highlighted a useful addition—allowing team members to select specific working days, as not everyone works full-time.
+This project successfully delivered the Minimum Viable Product (MVP), meeting all the main features outlined during requirements gathering. The interface is functional and user-friendly enough for regular use by product teams. I spent a lot of time refining my understanding of GitHub’s workflow for version control, which was more intensive than previous experiences but valuable for improving my approach. Working in an Agile environment using Scrum was familiar, but I still learned a lot by iterating on my workflow, such as setting up GitHub Actions for automated testing, improving naming conventions, and breaking down larger tasks into smaller, more manageable ones. That said, the analysis and design phases were fairly minimal, relying mostly on an empathy map. Expanding this with techniques like user journey mapping or additional stakeholder input would have helped create a stronger foundation. 
+
+My ticketing system was consistent but could have been improved with clearer acceptance criteria and better use of GitHub’s "Create sub-issue" feature for managing tasks. The product itself aligns with the original Figma prototype, with some stylistic differences for the sake of accessibility. The codebase is reasonably structured, with frequent comments and automated tests to make it easier to extend in the future. Feedback has already highlighted a useful addition—allowing team members to select specific working days, as not everyone works full-time. Additionally, the application has so far only been designed with desktop browsers in mind, and not phone browsers. Adjusting the layout to fit phones as well would be a simple yet significant option for users. 
