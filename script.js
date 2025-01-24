@@ -130,8 +130,8 @@ generateRotaBtn.addEventListener('click', () => {
   for (let i = 0; i < assignments.length; i++) {
     const { day, person } = assignments[i];
     table_html += `<tr>
-      <td>${day}</td>
-      <td>${person}</td>
+      <td><strong>${day}</strong></td>
+      <td><strong>${person}</strong></td>
     </tr>`;
   }
 
