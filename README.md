@@ -59,8 +59,7 @@ This application is a three-step tool :
 3. Generate Rota by clicking the button. A table appears in the right box, showing each day with a randomly assigned leader.
 4. If you want to export or share it, click “Export Rota.”
 
-![image](https://github.com/user-attachments/assets/416a639f-03ac-4187-8b3e-cc0c83ffde73)
-
+![image](https://github.com/user-attachments/assets/f8014cbe-3d57-442b-9cd5-d5df2aa9badb)
 
 ## Technical Documentation
 
@@ -71,7 +70,7 @@ This application is a three-step tool :
 | **style.css**        | Core CSS styling.                                               |
 | **script.js**        | Main client-side logic for DOM events, form submissions, etc.   |
 | **functions.js**     | Core logic functions (add, remove, shuffle, etc.). Kept in a seperate .js file for jest testing. Ensure to export any new functions at the bottom of the script, like how other functions are|
-| **\_\_tests\_\_/**   | All Jest test files are held in this folder                             |
+| **\_\_tests\_\_/**   | All [Jest](https://jestjs.io/) test files are held in this folder                             |
 | **package.json**     | Lists dev dependencies, for Jest.                    |
 | **package-lock.json**| Ensures consistent dependencies by locking specific versions    |
 | **.github/**         | Contains issue templates and GitHub Actions code                |
@@ -87,7 +86,7 @@ This application is a three-step tool :
 2. Open `index.html` in your preferred browser to run the application locally.
 
 ### Testing
-I have used **Jest** for testing the logic in `functions.js`. Basic tests live in `__tests__`:
+I have used **[Jest](https://jestjs.io/)** for testing the logic in `functions.js`. Basic tests live in `__tests__`:
 1. Install Jest (must have [Node.js](https://nodejs.org/en/download) installed):
 
    ```bash
@@ -135,31 +134,32 @@ The initial design prototype was created using Figma to visualise the interface 
 
 
 ### Project Management
-After having completed the design stage of the project, the next step was to organise the development pipeline. This invovled using GitHub and GitHub Projects to ensure effective workflow and task tracking.
+After having completed the planning and design stage of the project, the next step was to organise the development pipeline. This invovled using GitHub and GitHub Projects to ensure an effective workflow and task tracking.
 
 #### Ticketing System
-GitHub Projects’ Kanban board functionality was used to manage tasks, linking issues and branches to ensure  alignment.
+GitHub Projects’ **Kanban** board functionality was used to manage tasks, linking issues and branches to ensure alignment.
 
 ![image](https://github.com/user-attachments/assets/e70bf352-1a36-4a03-ae4f-79d2c94362ad)
 
 
-Before starting development, I utilised GitHub's [ticket template](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository) feature to define two types : "Features" and "Bugs". Feature tickets required an associated user story, a description, acceptance criteria and optional additional notes. Bug tickets required a description, steps to reproduce, the expected result, images if applicable and optional additional notes. I then created sub-task tickets linked to the 3 user stories created previously. This link was only established by copying the user story in the sub-task ticket, however I discovered near the end of development that "Sub-issues" are a built-in feature of GitHub Projects. I could theoretically create a ticket for each user story and create sub-task tickets directly from them, which would be easier to track and manage. For future GitHub projects, I'll aim to utilise this functionality where applicable.
+Before starting development, I utilised GitHub's [ticket template](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository) feature to define two types : **"Features"** and **"Bugs"**. Feature tickets required an associated user story, a description, acceptance criteria and optional additional notes. Bug tickets required a description, steps to reproduce, the expected result, images if applicable and optional additional notes. I then created sub-task tickets linked to the 3 user stories created previously. This link was only established by copying the user story in the sub-task ticket, however I discovered near the end of development that **[Sub-issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/adding-sub-issues)** are a built-in feature of GitHub Projects. I could theoretically create a ticket for each user story and create sub-task tickets directly from them, which would be easier to track and manage. For future GitHub projects, I'll aim to utilise this functionality where applicable.
+- **[Example Feature Ticket](https://github.com/im220114a/se-summative-1-2025/issues/11)**
+- **[Example Bug Ticket](https://github.com/im220114a/se-summative-1-2025/issues/28)**
 
-![image](https://github.com/user-attachments/assets/45932511-727b-4111-aae4-4befeeced2e2)
 
 #### Branching Strategy
 Each ticket was associated with a dedicated branch, ensuring changes were incrementally merged into the main codebase. This approach enabled controlled versioning and reduced the risk of introducing bugs.
 
 #### Scrum Methodology
-A key aspect of this was regular reviews to inform decisions that improve the workflow process for the rest of the project. This is part of the Scrum methodology in which the product team has reviews at the end of each "Sprint" (a set period). As I am the only member of the team and due to the time available for this project, I was only able to perform sprints of 2/3 days, in which I would review if anything could be done to improve [insert here]. As an example of where this had helped was during my first sprint in which I noticed that GitHub, upon trying to merge my branches, informed me that I should setup "GitHub Actions"
+I carried out regular reviews to inform decisions that improve the workflow process for the rest of the project. This is part of the Scrum methodology in which the product team has reviews at the end of each "Sprint" (a set period). As I am the only member of the team and due to the time available for this project, I was only able to perform sprints of 2/3 days, at the end of which I would carry out a short "Sprint Retrospective". As an example of where this had helped was during my first sprint in which I noticed that GitHub, upon trying to merge my branches, informed me that I should setup **"GitHub Actions"**.
 
 ![image](https://github.com/user-attachments/assets/7d490f44-b336-4026-ac39-74ab66197b97)
 
-This was noted to be looked at during one of my sprint reviews. I discovered that [GitHub Actions](https://docs.github.com/en/actions/writing-workflows/quickstart) is a Continious Integration and Continous Delivery platform built into GitHub, which automates specific tasks, such as running tests whenever new code is pushed. This stood out as a very useful and applicable tool for this project, so I created another ticket to look at implementing GitHub Actions as part of the next sprint.
+This was noted to be looked at a sprint review. I discovered that [GitHub Actions](https://docs.github.com/en/actions/writing-workflows/quickstart) is a Continious Integration and Continous Delivery platform built into GitHub, which automates specific tasks, such as running tests whenever new code is pushed. This stood out as a potentially useful tool for this project, so I created another [ticket to look at implementing GitHub Actions](https://github.com/im220114a/se-summative-1-2025/issues/14) as part of the next sprint. This was completed in the following sprint, and proved to be beneficial when merging future branches.
 
-![image](https://github.com/user-attachments/assets/f6a6d5d6-b0c7-41c2-8eac-b99a6395733e)
+![image](https://github.com/user-attachments/assets/38589dac-014d-4876-a979-65d2a6e21cb8)
 
-Repeated evaluation is a core part of Scrum. For example, in one of my sprint reviews, I decided to break down my generic "Implement Unit Tests" ticket into a more specific "Create Tests for ..." tickets. This was easier to track as I could focus on completing the functionality of one aspect of the product as well as the testing, before moving on to the next.
+Regular evaluation is a core part of any Agile methodology. For example, in one of my sprint reviews, I decided to break down my generic "Implement Unit Tests" ticket into a more specific "Create Tests for ..." tickets. This was easier to track as I could focus on completing the functionality of one aspect of the product as well as the testing, before moving on to the next.
 
 ### Coding Practice
 In order to maintain strong code, I followed a standard to name my GitHub branches, my JavaScript functions and my JavaScript variables which were :
@@ -171,14 +171,11 @@ In order to maintain strong code, I followed a standard to name my GitHub branch
 
 Comments are used regularly throughout my code to clarify what is occuring and why, without overloading the reader with information for each line of code. Additionally, JavaScript descriptions are used to explain functions (similar to Python's docstrings).
 
-
 ### Testing
 After enabling GitHub Actions, the tests I defined would automatically run whenever attempting to create pull requests to the main branch, ensuring that any additions to the codebase would not be breaking any existing functionality. This is incredibly important where bugs may slip through manual testing.
 
 #### Experimenting with Test Driven Development (TDD)
-Part of this project involved learning about the usage of test-driven development, and more importantly, how one would incorporate it into their workflow. In order to understand it better, I decided to choose one ticket ("Display, Remove Names & Reset List") that would be developed via TDD. For testing my application, I used the testing framework [Jest](https://jestjs.io/).
-
-I first had to define tests for what I would expect to be returned from functions
+An element of this project involved learning about test-driven development, and more importantly, how one would incorporate it into their workflow. In order to understand it better, I decided to choose one ticket ("Display, Remove Names & Reset List") that would be developed via TDD. I first had to define tests for what I would expect to be returned from functions that I would eventually code.
 
 ```javascript
 const { addAttendee, removeAttendee, clearAttendees } = require('../functions');
@@ -221,11 +218,11 @@ describe("Display, Remove, & Reset Attendees", () => {
   });
   ```
 
-Then, running the tests would guarantee that they fail :
+Then, running `npm test` in the terminal would guarantee that they fail :
 
 ![image](https://github.com/user-attachments/assets/7af415ab-e592-4b42-8d09-f99eeccacc5a)
 
-These tests were merged with the main branch and I began developing a new branch dedicated to actually creating these theoretical functions :
+These tests were merged with the main branch and I began developing a new branch dedicated to actually creating these theoretical functions:
 
 ```javascript
 /**
@@ -256,14 +253,23 @@ function clearAttendees(array) {
 }
 ```
 
-After developing the function, I then made sure the tests had passed 
+After developing the function, I then ran `npm test` again, expecting to see passes:
 
 ![image](https://github.com/user-attachments/assets/e9d74d16-892f-4c07-b807-3885f2f8e596)
 
+
 ### Accessibility
+ The initial colour scheme I had chosen for buttons (based on my Figma design) had been revealed to not follow WCAG 2.1 standards. This was verified by using the [Colour Contrast Analyser by TPGi](https://www.tpgi.com/color-contrast-checker/). 
+
+![image](https://github.com/user-attachments/assets/a9c7abe8-ebbd-4830-95b1-1c15a65aeff1)
+
+I made adjustments to ensure a more accessible colour palette and, using [Google Lighthouse](https://en.wikipedia.org/wiki/Lighthouse_(software)), analysed the accessibility of the website :
+
+![image](https://github.com/user-attachments/assets/7e4af9c6-7efe-42d4-8fc8-6ada2d567031)
+
+![image](https://github.com/user-attachments/assets/fc9532e0-42fb-48ea-b3aa-d43f169a74ee)
+
 
 ## Project Evaluation
 
-This project successfully delivered the Minimum Viable Product (MVP), meeting all the main features outlined during requirements gathering. The interface is functional and user-friendly enough for regular use by product teams. I spent a lot of time refining my understanding of GitHub’s workflow for version control, which was more intensive than previous experiences but valuable for improving my approach. Working in an Agile environment using Scrum was familiar (as I engage with it in my professional role), but I still learned a lot by iterating on my workflow, such as setting up GitHub Actions for automated testing, improving naming conventions, and breaking down larger tasks into smaller, more manageable ones. That said, the analysis and design phases were fairly minimal, relying mostly on an empathy map. Expanding this with techniques like user journey mapping or additional stakeholder input would have helped create a stronger foundation. My ticketing system was consistent but could have been improved with clearer acceptance criteria and better use of GitHub’s "Create sub-issue" feature for managing tasks. 
-
-The product itself aligns with the original Figma prototype, with only minor stylistic differences. The codebase is reasonably structured, with frequent comments and automated tests to make it easier to extend in the future. Feedback has already highlighted a useful addition—allowing team members to select specific working days, as not everyone works full-time. Overall, I’m happy with how the project turned out. It was a good opportunity to apply and improve my skills, and it highlighted areas where I can do better in the future, especially in the design and planning stages.
+This project successfully delivered the Minimum Viable Product (MVP), meeting all the main features outlined during requirements gathering. The interface is functional and user-friendly enough for regular use by product teams. I spent a lot of time refining my understanding of GitHub’s workflow for version control, which was more intensive than previous experiences but valuable for improving my approach. Working in an Agile environment using Scrum was familiar, but I still learned a lot by iterating on my workflow, such as setting up GitHub Actions for automated testing, improving naming conventions, and breaking down larger tasks into smaller, more manageable ones. That said, the analysis and design phases were fairly minimal, relying mostly on an empathy map. Expanding this with techniques like user journey mapping or additional stakeholder input would have helped create a stronger foundation. My ticketing system was consistent but could have been improved with clearer acceptance criteria and better use of GitHub’s "Create sub-issue" feature for managing tasks. The product itself aligns with the original Figma prototype, with some stylistic differences for the sake of accessibility. The codebase is reasonably structured, with frequent comments and automated tests to make it easier to extend in the future. Feedback has already highlighted a useful addition—allowing team members to select specific working days, as not everyone works full-time.
