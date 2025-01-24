@@ -1,5 +1,13 @@
 # Stand-Up Scheduler
-Created By: Ibrahim Malik (@im220114a)
+A simple web application for product teams to manage daily stand-up rotas. It allows users to input team member names, select which weekdays to hold stand-ups, randomly assign a leader for each day, and export the final schedule as a CSV file. The application is built with vanilla HTML, CSS, and JavaScript, and uses Jest for basic testing. Created By: Ibrahim Malik (@im220114a).
+
+## Table of Contents
+1. [Context and Purpose](#context-and-purpose)
+2. [User Documentation](#user-documentation)
+3. [Technical Documentation](#technical-documentation)
+4. [Development and Design Process](#development-and-design-process)
+   - [Planning](#planning)
+   - [Non-Functional Design Prototype](#non-functional-design-prototype)
 
 ## Context and Purpose 
 Agile Scrum teams rely on daily stand-ups to share progress, address blockers, and plan immediate next steps. Traditionally, a Scrum Master or consistent facilitator leads these quick sessions. However, our managers and Scrum leaders believe in rotating this responsibility amongst each product team memeber. This model is being implemented in order to :
@@ -10,9 +18,84 @@ Agile Scrum teams rely on daily stand-ups to share progress, address blockers, a
 Until now, we’ve been choosing a facilitator informally—often deciding at the last minute. This spontaneous approach can catch team members off guard or unfairly shift the burden onto a few individuals. Our application provides a simple, efficient solution: it generates a random schedule for the entire week, ensuring each person on the product team knows in advance which day they’ll be leading the stand-up. In the future, the application could be enhanced to integrate with existing project management tools—such as Jira or Slack—to post daily reminders. However, currently the website produced is a minimum viable product.
 
 ## User Documentation
+This application is a three-step tool :
+
+**1. Add Team Members**
+   - Under the **Enter Names** box (left side), type a name in the input field
+   - Press **Add** or hit Enter to confirm
+   - The new name appears in a list below
+   - **Duplicate Check** - If you try to add the same name twice, an error will appear
+   - Remove a name by clicking the **X** button next to it
+     
+**2. Choose Days & Generate Rota**
+   - In the **Day Selection** box (middle box), each weekday is listed with a checkbox.
+   - By default, all weekdays are checked. Uncheck any day you don’t want in the rota.
+   - Click **Generate Rota**.
+   - If no attendees or no days are selected, an error prompts you to correct it.
+     
+**3. View & Export**
+   - The right-hand box displays the randomly assigned schedule in a table.
+   - Each day is listed in one column, with a randomly selected leader in the next.
+   - **Export Rota** downloads the table as a `standup_rota.csv` file. You can share or archive this file for reference.
+  
+**Resetting Attendees**
+- Click **Clear All** in the left box to remove all names. You’ll be asked to confirm.
+- After clearing, you can add new names for a fresh start.
+
+**Example Usage**
+1. Add the following names : “Alice”, “Bob”, “Charlie" and “Diana”.
+2. Uncheck Friday if your team doesn’t do stand-ups on Friday.
+3. Generate Rota by clicking the button. A table appears in the right box, showing each day with a randomly assigned leader.
+4. If you want to export or share it, click “Export Rota.”
 
 ## Technical Documentation
 
+
+| File/Folder          | Purpose                                                         |
+|----------------------|-----------------------------------------------------------------|
+| **index.html**       | Main HTML page, containing three “boxes” for names, days, rota. |
+| **style.css**        | Core CSS styling.                                               |
+| **script.js**        | Main client-side logic for DOM events, form submissions, etc.   |
+| **functions.js**     | Core logic functions (add, remove, shuffle, etc.). Kept in a seperate .js file for jest testing|
+| **\_\_tests\_\_/**   | Jest test files held in this folder                             |
+| **package.json**     | (Optional) Lists dev dependencies, for Jest.                    |
+| **package-lock.json**|                    |
+| **.github/**         | Contains issue templates and GitHub Actions code                |
+
+### Local Installation & Setup
+1. Clone this repository:
+
+   ```bash
+   git clone https://github.com/im220114a/se-summative-1-2025.git
+   cd se-summative-1-2025
+   ```
+
+2. **(Optional)** Install dev dependencies for testing:
+
+   ```bash
+   npm install
+   ```
+3. Open `index.html` in your preferred browser to run the application locally.
+
+### Testing
+We use **Jest** for testing the logic in `functions.js`. Basic tests live in `__tests__`:
+1. Install Jest (if not done):
+
+   ```bash
+   npm install --save-dev jest
+   ```
+
+2. Run Tests:
+
+   ```bash
+   npm test
+   ```
+
+Sample Test - `displayRemoveReset.test.js` demonstrates the expected format for testing the addition and removal of attendees in the list.
+
+### Known Limitations
+- Currently no persistent storage. When the page reloads, the attendee list resets.
+- Limited error handling (e.g. quickly re-adding a name)
 
 ## Development and Design Process
 
