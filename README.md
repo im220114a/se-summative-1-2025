@@ -1,5 +1,3 @@
-[![codecov](https://codecov.io/gh/im220114a/se-summative-1-2025/branch/main/graph/badge.svg)](https://codecov.io/gh/im220114a/se-summative-1-2025)
-
 # Stand-Up Scheduler
 A simple web application for product teams to manage daily stand-up rotas. It allows users to input team member names, select which weekdays to hold stand-ups, randomly assign a leader for each day, and export the final schedule as a CSV file. The application is built with vanilla HTML, CSS, and JavaScript, and uses Jest for basic testing. Created By: Ibrahim Malik (@im220114a).
 
